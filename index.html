@@ -3,115 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezago Social en Xalapa | Análisis Geoestadístico</title>
+    <title>Rezago Social Xalapa | Universidad Veracruzana</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .header-title { color: #2c3e50; font-weight: bold; margin-top: 40px; }
-        .card:hover { transform: scale(1.02); transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .btn-mapa { background-color: #2c3e50; color: white; }
-        .btn-mapa:hover { background-color: #1a252f; color: white; }
+        body { 
+            background-color: #f4f6f9; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+        
+        /* Paleta Institucional UV */
+        .uv-header { 
+            background-color: #18529D; /* Azul UV */
+            border-bottom: 6px solid #285C4D; /* Verde Institucional */
+            color: white; 
+            padding: 15px 0; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .uv-title { font-weight: 700; letter-spacing: 1px; margin: 0; font-size: 1.8rem; }
+        .uv-subtitle { font-weight: 300; font-size: 1.1rem; margin-top: 5px; color: #e0e0e0; }
+        
+        /* Estilos de las tarjetas de mapas */
+        .card { border: none; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .card:hover { 
+            transform: translateY(-5px); 
+            transition: 0.3s; 
+            box-shadow: 0 8px 15px rgba(24, 82, 157, 0.2); 
+            border: 1px solid #18529D; 
+        }
+        
+        .btn-mapa { background-color: #18529D; color: white; font-weight: 500; }
+        .btn-mapa:hover { background-color: #113b73; color: white; }
+        
+        /* Logos */
+        .logo-uv { max-height: 80px; object-fit: contain; }
+        .logo-carrera { 
+            max-height: 55px; 
+            object-fit: contain; 
+            transition: transform 0.2s ease-in-out;
+            border-radius: 4px;
+        }
+        /* Efecto de zoom al pasar el ratón por las carreras */
+        .logo-carrera:hover {
+            transform: scale(1.15);
+            cursor: pointer;
+        }
+        
+        /* Footer */
+        .uv-footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
 
-<div class="container mb-5">
-    <div class="row text-center">
-        <div class="col-12">
-            <h1 class="header-title">Análisis Geoestadístico del Rezago Social</h1>
-            <h3 class="text-muted">Xalapa, Veracruz (Por AGEB)</h3>
-            <p class="lead mt-3">Exploración espacial de las dimensiones de educación, salud y vivienda utilizando clasificación por Cortes Naturales (Jenks).</p>
-            <hr class="my-4">
+    <header class="uv-header">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center">
+            
+            <div class="mb-2 mb-md-0">
+                <img src="logo_uv.png" alt="Logo Universidad Veracruzana" class="logo-uv" onerror="this.src='https://via.placeholder.com/100x80/ffffff/18529D?text=Logo+UV'">
+            </div>
+            
+            <div class="text-center px-3 mb-2 mb-md-0 flex-grow-1">
+                <h1 class="uv-title">Universidad Veracruzana</h1>
+                <h2 class="uv-subtitle">Facultad de Estadística e Informática</h2>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <a href="https://www.uv.mx/fei/plan-de-estudios/lincid/" target="_blank" title="Licenciatura en Ingeniería en Ciencia de Datos">
+                    <img src="logo_lincid.png" alt="LINCID" class="logo-carrera" onerror="this.src='https://via.placeholder.com/60x60/ffffff/18529D?text=LINCID'">
+                </a>
+                <a href="https://www.uv.mx/fei/plan-de-estudios/licic/" target="_blank" title="Licenciatura de Ciberseguridad e Infraestructura de Cómputo">
+                    <img src="logo_licic.png" alt="LICIC" class="logo-carrera" onerror="this.src='https://via.placeholder.com/60x60/ffffff/18529D?text=LICIC'">
+                </a>
+                <a href="https://www.uv.mx/fei/plan-de-estudios/listi/" target="_blank" title="Licenciatura en Ingeniería en Sistemas y Tecnologías de la Información">
+                    <img src="logo_listi.png" alt="LISTI" class="logo-carrera" onerror="this.src='https://via.placeholder.com/60x60/ffffff/18529D?text=LISTI'">
+                </a>
+                <a href="https://www.uv.mx/fei/plan-de-estudios/lis/" target="_blank" title="Licenciatura en Ingeniería de Software">
+                    <img src="logo_lis.png" alt="LIS" class="logo-carrera" onerror="this.src='https://via.placeholder.com/60x60/ffffff/18529D?text=LIS'">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mt-5 mb-5">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="fw-bold" style="color: #2c3e50;">Análisis Geoestadístico del Rezago Social</h2>
+                <h4 class="text-muted">Xalapa, Veracruz (Nivel AGEB, 2020)</h4>
+                <p class="lead mt-3">Proyecto de visualización espacial mediante clasificación de Cortes Naturales (Jenks).</p>
+                <hr style="width: 100px; margin: 20px auto; border-top: 3px solid #285C4D; opacity: 1;">
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <h5 class="fw-bold text-dark">1. Analfabetismo</h5>
+                    <p class="text-muted small">Población de 15 años o más</p>
+                    <a href="Mapa_Analfabetismo_Xalapa_Jenks.html" class="btn btn-mapa mt-auto" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <h5 class="fw-bold text-dark">2. Inasistencia (6 a 14 años)</h5>
+                    <p class="text-muted small">Población que no asiste a la escuela</p>
+                    <a href="Mapa_2_Inasistencia_6_14_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <h5 class="fw-bold text-dark">3. Inasistencia (15 a 24 años)</h5>
+                    <p class="text-muted small">Población joven que no asiste a la escuela</p>
+                    <a href="Mapa_3_Inasistencia_15_24_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <h5 class="fw-bold text-dark">4. Ed. Básica Incompleta</h5>
+                    <p class="text-muted small">Población de 15 años o más</p>
+                    <a href="Mapa_4_Educacion_Basica_Incompleta_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <h5 class="fw-bold text-dark">5. Sin Servicios de Salud</h5>
+                    <p class="text-muted small">Población sin derechohabiencia</p>
+                    <a href="Mapa_5_Sin_Derechohabiencia_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <h5 class="fw-bold text-dark">6. Hacinamiento</h5>
+                    <p class="text-muted small">Viviendas con hacinamiento</p>
+                    <a href="Mapa_6_Viviendas_Hacinamiento_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <h5 class="fw-bold text-dark">7. Sin Agua Entubada</h5>
+                    <p class="text-muted small">Viviendas sin acceso a red pública</p>
+                    <a href="Mapa_7_Sin_Agua_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <h5 class="fw-bold text-dark">8. Sin Excusado</h5>
+                    <p class="text-muted small">Viviendas sin sanitario</p>
+                    <a href="Mapa_8_Sin_Excusado_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <h5 class="fw-bold text-dark">9. Sin Drenaje</h5>
+                    <p class="text-muted small">Viviendas que no disponen de drenaje</p>
+                    <a href="Mapa_9_Sin_Drenaje_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <h5 class="fw-bold text-dark">10. Sin Energía Eléctrica</h5>
+                    <p class="text-muted small">Viviendas sin acceso a electricidad</p>
+                    <a href="Mapa_10_Sin_Electricidad_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <h5 class="fw-bold text-dark">11. Piso de Tierra</h5>
+                    <p class="text-muted small">Viviendas con piso de tierra</p>
+                    <a href="Mapa_11_Piso_Tierra_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4" style="border: 2px solid #285C4D;">
+                    <h5 class="fw-bold" style="color: #285C4D;">12. Grado de Rezago Social</h5>
+                    <p class="text-muted small">Índice compuesto (CONEVAL)</p>
+                    <a href="Mapa_12_Grado_Rezago_Social_Xalapa.html" class="btn mt-auto" style="background-color: #285C4D; color: white; font-weight: 500;" target="_blank">Abrir Mapa</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <h5>1. Analfabetismo</h5>
-                <p class="text-muted small">Población de 15 años o más</p>
-                <a href="Mapa_Analfabetismo_Xalapa_Jenks.html" class="btn btn-mapa mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
+    <footer class="uv-footer text-center">
+        <div class="container">
+            <p class="mb-0">Desarrollado por <strong>Leonardo Hernández Ávila</strong></p>
+            <p class="mb-0 small text-white-50">Generado con Python, Pandas y Folium</p>
         </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <h5>2. Inasistencia (6 a 14 años)</h5>
-                <p class="text-muted small">Población que no asiste a la escuela</p>
-                <a href="Mapa_2_Inasistencia_6_14_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <h5>3. Inasistencia (15 a 24 años)</h5>
-                <p class="text-muted small">Población joven que no asiste a la escuela</p>
-                <a href="Mapa_3_Inasistencia_15_24_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <h5>4. Educación Básica Incompleta</h5>
-                <p class="text-muted small">Población de 15 años o más</p>
-                <a href="Mapa_4_Educacion_Basica_Incompleta_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <h5>5. Sin Servicios de Salud</h5>
-                <p class="text-muted small">Población sin derechohabiencia</p>
-                <a href="Mapa_5_Sin_Derechohabiencia_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <h5>6. Hacinamiento</h5>
-                <p class="text-muted small">Viviendas con hacinamiento</p>
-                <a href="Mapa_6_Viviendas_Hacinamiento_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <h5>7. Sin Agua Entubada</h5>
-                <p class="text-muted small">Viviendas sin acceso a red pública</p>
-                <a href="Mapa_7_Sin_Agua_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <h5>8. Sin Excusado</h5>
-                <p class="text-muted small">Viviendas sin sanitario</p>
-                <a href="Mapa_8_Sin_Excusado_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <h5>9. Sin Drenaje</h5>
-                <p class="text-muted small">Viviendas que no disponen de drenaje</p>
-                <a href="Mapa_9_Sin_Drenaje_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <h5>10. Sin Energía Eléctrica</h5>
-                <p class="text-muted small">Viviendas sin acceso a electricidad</p>
-                <a href="Mapa_10_Sin_Electricidad_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3">
-                <h5>11. Piso de Tierra</h5>
-                <p class="text-muted small">Viviendas con piso de tierra</p>
-                <a href="Mapa_11_Piso_Tierra_Xalapa.html" class="btn btn-mapa mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center p-3 border-dark">
-                <h5 class="text-danger">12. Grado de Rezago Social</h5>
-                <p class="text-muted small">Índice compuesto (CONEVAL 2020)</p>
-                <a href="Mapa_12_Grado_Rezago_Social_Xalapa.html" class="btn btn-danger mt-auto" target="_blank">Ver Mapa interactivo</a>
-            </div>
-        </div>
-    </div>
-</div>
+    </footer>
 
 </body>
 </html>
